@@ -5,7 +5,15 @@ import { data } from "../data/data";
 // Return example: 'Planet Name'
 
 export function findPlanetNameByMoon(data, moonName) {
-  // Your code goes here...
+  return data.planets
+    .filter(planet => planet.hasOwnProperty("moons"))
+    .filter(planet => {
+      if (planet.moons.includes(moonName)){
+        return planet.name;
+      }
+    })
+    .map(planet => planet.name)
+    .join();
 }
 
 

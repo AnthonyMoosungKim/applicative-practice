@@ -8,14 +8,38 @@
  * * maxBy(): Return the element where the callback function on that element yields the highest value
  */
 
-export function minBy(array, cb) {
-  // Your code goes here...
+export function minBy(array, callback) {
+  if (array.length === 0) return undefined;
 
+  let minElement = array[0];
+  let minValue = callback(minElement);
+
+  for (let number of array) {
+    const currentValue = callback(number);
+    if (currentValue < minValue) {
+      minValue = currentValue;
+      minElement = number;
+    }
+  }
+
+  return minElement;
 }
 
-export function maxBy(array, cb) {
-  // Your code goes here...
+export function maxBy(array, callback) {
+  if (array.length === 0) return undefined;
 
+  let maxElement = array[0];
+  let maxValue = callback(maxElement);
+
+  for (let number of array) {
+    const currentValue = callback(number);
+    if (currentValue > maxValue) {
+      maxValue = currentValue;
+      maxElement = number;
+    }
+  }
+
+  return maxElement;
 }
 
 
